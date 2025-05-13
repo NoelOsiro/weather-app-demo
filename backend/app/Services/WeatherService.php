@@ -40,6 +40,7 @@ class WeatherService
                 ],
             ]);
 
+
             $data = json_decode($response->getBody(), true);
 
             if (empty($data)) {
@@ -77,13 +78,10 @@ class WeatherService
                 'units' => $units,
                 'appid' => $this->apiKey,
             ]);
-            Log::debug('Requesting Current Weather API: ' . $currentUrl);
             $currentResponse = $this->client->get($currentUrl, [
                 'headers' => ['Cache-Control' => 'no-cache'],
             ]);
             $currentData = json_decode($currentResponse->getBody(), true);
-            Log::debug('Current Weather API response: ' . json_encode($currentData, JSON_PRETTY_PRINT));
-
             if (!isset($currentData['main']) || !isset($currentData['weather'])) {
                 Log::error('Invalid Current Weather API response structure');
                 return null;
@@ -97,12 +95,10 @@ class WeatherService
                 'cnt' => 40, // Max 5 days
                 'appid' => $this->apiKey,
             ]);
-            Log::debug('Requesting 5-day Forecast API: ' . $forecastUrl);
             $forecastResponse = $this->client->get($forecastUrl, [
                 'headers' => ['Cache-Control' => 'no-cache'],
             ]);
             $forecastData = json_decode($forecastResponse->getBody(), true);
-            Log::debug('5-day Forecast API response: ' . json_encode($forecastData, JSON_PRETTY_PRINT));
 
             if (!isset($forecastData['list'])) {
                 Log::error('Invalid 5-day Forecast API response structure');
@@ -164,17 +160,22 @@ class WeatherService
     {
         $temps = array_column($dayData, 'main');
         $temps = array_column($temps, 'temp');
-        $weather = $dayData[round(count($dayData) / 2)]; // Use midday weather for description/icon
+
+        // Default to first entry
+        $midIndex = (int) floor(count($dayData) / 2);
+        $weatherEntry = $dayData[$midIndex] ?? $dayData[0];
+
+        $weatherData = $weatherEntry['weather'][0] ?? ['description' => 'N/A', 'icon' => ''];
 
         return [
             'dt' => $dayData[0]['dt'],
             'temp' => [
-                'day' => array_sum($temps) / count($temps), // Average temp
+                'day' => count($temps) > 0 ? round(array_sum($temps) / count($temps), 1) : null,
             ],
             'weather' => [
                 [
-                    'description' => $weather['weather'][0]['description'],
-                    'icon' => $weather['weather'][0]['icon'],
+                    'description' => $weatherData['description'] ?? 'N/A',
+                    'icon' => $weatherData['icon'] ?? '',
                 ],
             ],
         ];
