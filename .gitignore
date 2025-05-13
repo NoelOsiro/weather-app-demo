@@ -1,0 +1,10 @@
+# Global ignores
+node_modules/
+.env
+vendor/
+storage/
+*.log
+.next/
+.idea/
+.DS_Store
+*.lock
