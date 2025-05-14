@@ -47,6 +47,13 @@ export function celsiusToFahrenheit(celsius: number): number {
   return (celsius * 9) / 5 + 32
 }
 
+//  Convert meters/sec to mph
+// Convert meters/sec to mph
+export function metersPerSecondToMph(mps: number): number {
+  return mps * 2.23694;
+}
+
+
 // Mock data for development and fallback
 export const mockWeatherData: WeatherData = {
   city: "London",
