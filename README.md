@@ -23,6 +23,11 @@ This is a decoupled weather app built using:
    cp .env.example .env
    php artisan key:generate
    ```
+3. Add your [OpenWeatherMap API Key](https://openweathermap.org/api) in `.env` file:
+
+   ```
+   OPENWEATHERMAP_API_KEY=your_key
+   ```
 
    **Frontend:**
 
@@ -34,7 +39,8 @@ This is a decoupled weather app built using:
 3. Add your [OpenWeatherMap API Key](https://openweathermap.org/api) in `.env` file:
 
    ```
-   WEATHER_API_KEY=your_api_key
+   NEXT_PUBLIC_WEATHER_API_URL=http://127.0.0.1:8000/api/weather
+   NEXT_PUBLIC_WEATHER_API_KEY=your_key
    ```
 
 4. Run both frontend and backend:
@@ -77,6 +83,8 @@ This is a decoupled weather app built using:
 ## 📸 Screenshots
 
 *Add screenshots here if required.*
+![alt text](screenshots/image.png)
+![alt text](screenshots/image.png)
 
 ```
 
