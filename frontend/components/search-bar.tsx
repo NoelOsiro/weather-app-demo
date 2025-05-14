@@ -29,7 +29,7 @@ export default function SearchBar({ onSearch, unit, onUnitChange }: SearchBarPro
           <input
             type="text"
             placeholder="Search city..."
-            className="w-full px-4 py-2 rounded-lg border border-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+            className="bg-white px-4 py-2 text-black input input-block border border-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />

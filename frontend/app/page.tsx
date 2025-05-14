@@ -10,7 +10,7 @@ import SearchBar from "@/components/search-bar"
 import { formatFullDate } from "@/utils/date-utils"
 
 export default function WeatherApp() {
-  const [city, setCity] = useState("London")
+  const [city, setCity] = useState("Nairobi")
   const [unit, setUnit] = useState<"C" | "F">("C")
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null)
   const [loading, setLoading] = useState(true)
@@ -61,7 +61,7 @@ export default function WeatherApp() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-100 to-white py-8">
-      <div className="container mx-auto px-4 max-w-5xl">
+      <div className="container mx-auto px-4 max-w-6xl">
         <h1 className="text-3xl font-bold text-sky-900 mb-6 text-center">Weather Forecast</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -124,6 +124,7 @@ export default function WeatherApp() {
               <h2 className="text-xl font-semibold mb-4 text-sky-900">Today's Highlights</h2>
               <WeatherDetails
                 windSpeed={weatherData?.current?.wind_speed || 0}
+                windDirection={weatherData?.current?.wind_deg || 0}
                 humidity={weatherData?.current?.humidity || 0}
                 unit={unit}
               />

@@ -6,7 +6,8 @@ export interface WeatherData {
     temp: number
     description: string
     icon: string
-    wind_speed: number
+    wind_speed: number,
+    wind_deg: number,
     humidity: number
     dt: number
   }
@@ -55,6 +56,7 @@ export const mockWeatherData: WeatherData = {
     description: "clear sky",
     icon: "01d",
     wind_speed: 2.24,
+    wind_deg: 79,
     humidity: 47,
     dt: 1747164103,
   },
