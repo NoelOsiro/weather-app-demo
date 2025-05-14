@@ -91,7 +91,7 @@ NEXT_PUBLIC_WEATHER_API_KEY=your_key
 
 ![Screenshot](screenshots/image.png)
 ![Screenshot](screenshots/search.png)
-![alt text]((screenshots/serach.png))
+![alt text](screenshots/serach.png)
 
 ---
 
