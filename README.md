@@ -1,106 +1,109 @@
-# Weather App
+# 🌤️ Weather App
 
-This is a decoupled weather app built using:
+This is a decoupled weather application built using:
 
-- **Frontend:** Next.js 14 + Typescript + RippleUI (TailwindCSS)
-- **Backend:** Laravel 11 (API Only)
+* **Frontend:** Next.js 14 + TypeScript + RippleUI (TailwindCSS)
+* **Backend:** Laravel 11 (API Only)
+
+---
 
 ## 🔧 Setup Instructions
 
-1. Clone the repo:
-   ```bash
-   git clone ...
-   cd weather-app
-````
+### 1. Clone the Repo
 
-2. Install dependencies:
+```bash
+git clone ...
+cd weather-app
+```
 
-   **Backend:**
+### 2. Install Dependencies
 
-   ```bash
-   cd backend
-   composer install
-   cp .env.example .env
-   php artisan key:generate
-   ```
-3. Add your [OpenWeatherMap API Key](https://openweathermap.org/api) in `.env` file:
+#### Backend
 
-   ```
-   OPENWEATHERMAP_API_KEY=your_key
-   ```
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-   **Frontend:**
+Then add your [OpenWeatherMap API Key](https://openweathermap.org/api) to the `.env` file:
 
-   ```bash
-   cd ../frontend
-   npm install
-   ```
+```env
+OPENWEATHERMAP_API_KEY=your_key
+```
 
-3. Add your [OpenWeatherMap API Key](https://openweathermap.org/api) in `.env` file:
+#### Frontend
 
-   ```
-   NEXT_PUBLIC_WEATHER_API_URL=http://127.0.0.1:8000/api/weather
-   NEXT_PUBLIC_WEATHER_API_KEY=your_key
-   ```
+```bash
+cd ../frontend
+npm install
+```
 
-4. Run both frontend and backend:
+Then add the following to your `.env` file:
 
-   * On Windows:
-     Double-click `start.bat`
+```env
+NEXT_PUBLIC_WEATHER_API_URL=http://127.0.0.1:8000/api/weather
+NEXT_PUBLIC_WEATHER_API_KEY=your_key
+```
 
-   * On Linux/macOS:
+### 3. Run Both Frontend and Backend
 
-     ```bash
-     ./start.sh
-     ```
+* **On Windows:**
 
-5. Access:
+  Double-click `start.bat`
 
-   * Frontend: [http://localhost:3000](http://localhost:3000)
-   * Backend: [http://localhost:8000/api/weather](http://localhost:8000/api)
+* **On Linux/macOS:**
+
+  ```bash
+  ./start.sh
+  ```
+
+### 4. Access the App
+
+* Frontend: [http://localhost:3000](http://localhost:3000)
+* Backend: [http://localhost:8000/api/weather](http://localhost:8000/api/weather)
 
 ---
 
 ## ✨ Features
 
-* City search with autocomplete (Geocoding API)
-* Weather forecast (current + next 3 days)
-* Switch between Celsius and Fahrenheit
-* Humidity, wind status, weather icons
-* Fully responsive with RippleUI
+* 🔍 City search with autocomplete (Geocoding API)
+* 🌤️ Weather forecast (current + next 3 days)
+* 🌡️ Switch between Celsius and Fahrenheit
+* 💧 Humidity, 🌬️ wind status, and weather icons
+* 📱 Fully responsive UI with RippleUI
 
 ---
 
 ## 🧠 Technical Notes
 
-* Type-safe API and props
-* No Blade views in Laravel
-* `fetch` used in Next.js for API calls
-* Clean, modular components using Tailwind + RippleUI
+* ✅ Type-safe API and props
+* ✅ Laravel backend only (no Blade views)
+* ✅ Uses `fetch` in Next.js for API calls
+* ✅ Modular UI components (Tailwind + RippleUI)
 
 ---
 
 ## 📸 Screenshots
 
-*Add screenshots here if required.*
-![alt text](screenshots/image.png)
-![alt text](screenshots/image.png)
+> *(Add actual screenshots here as needed)*
 
-```
-
----
-
-### ✅ Submission Checklist
-
-| Requirement                         | Done |
-|-------------------------------------|------|
-| Laravel API only (no Blade)         | ✅   |
-| Uses OpenWeatherMap API             | ✅   |
-| TypeScript + Tailwind + RippleUI    | ✅   |
-| City search (geocoding)             | ✅   |
-| Celsius/Fahrenheit toggle           | ✅   |
-| Weather details & 3-day forecast    | ✅   |
-| One-command startup (nice-to-have)  | ✅   |
-| Good README                         | ✅   |
+![Screenshot](screenshots/image.png)
+![Screenshot](screenshots/image.png)
 
 ---
+
+## ✅ Submission Checklist
+
+| Requirement                        | Done |
+| ---------------------------------- | ---- |
+| Laravel API only (no Blade)        | ✅    |
+| Uses OpenWeatherMap API            | ✅    |
+| TypeScript + Tailwind + RippleUI   | ✅    |
+| City search (geocoding)            | ✅    |
+| Celsius/Fahrenheit toggle          | ✅    |
+| Weather details & 3-day forecast   | ✅    |
+| One-command startup (nice-to-have) | ✅    |
+| Good README                        | ✅    |
+
