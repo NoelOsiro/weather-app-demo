@@ -90,7 +90,8 @@ NEXT_PUBLIC_WEATHER_API_KEY=your_key
 > *(Add actual screenshots here as needed)*
 
 ![Screenshot](screenshots/image.png)
-![Screenshot](screenshots/image.png)
+![Screenshot](screenshots/search.png)
+![alt text]((screenshots/serach.png))
 
 ---
 
