@@ -29,18 +29,23 @@ const BASE_URL = process.env.NEXT_PUBLIC_WEATHER_API_URL || "http://127.0.0.1:80
 
 export async function fetchWeatherData(city: string): Promise<WeatherData> {
   try {
-    const response = await fetch(`${BASE_URL}?city=${encodeURIComponent(city)}`)
+
+
+    const response = await fetch(
+      `${BASE_URL}?city=${encodeURIComponent(city)}`
+    );
 
     if (!response.ok) {
-      throw new Error(`Weather API error: ${response.status}`)
+      throw new Error(`Weather API error: ${response.status}`);
     }
 
-    return await response.json()
+    return await response.json();
   } catch (error) {
-    console.error("Error fetching weather data:", error)
-    throw error
+    console.error("Error fetching weather data:", error);
+    throw error;
   }
 }
+
 
 // Convert Celsius to Fahrenheit
 export function celsiusToFahrenheit(celsius: number): number {

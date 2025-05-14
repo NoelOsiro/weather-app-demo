@@ -59,11 +59,6 @@ export default function WeatherApp() {
     setUnit(newUnit);
   }, []);
 
-  const convertedWindSpeed = useMemo(
-    () => getWindSpeed(weatherData?.current?.wind_speed ?? 0, { unit }),
-    [weatherData?.current?.wind_speed, unit]
-  );
-
   const forecastCards = useMemo(() => {
     return weatherData?.forecast?.map((day, index) => (
       <ForecastCard
@@ -76,6 +71,13 @@ export default function WeatherApp() {
       />
     ));
   }, [weatherData?.forecast, unit]);
+
+  // Memoize the formatted date
+  const formattedDate = useMemo(() => {
+    return weatherData?.current?.dt
+      ? formatFullDate(weatherData.current.dt)
+      : "20th May 2023";
+  }, [weatherData?.current?.dt]);
 
   if (loading && !weatherData) {
     return (
@@ -103,9 +105,9 @@ export default function WeatherApp() {
               </div>
               <div className="text-center">
                 <h1 className="text-6xl font-bold text-sky-900">
-                  {weatherData?.current
-                    ? `${Math.round(getTemperature(weatherData.current.temp, { unit }))}`
-                    : "18"}
+                  {weatherData?.current?.temp
+                    ? Math.round(getTemperature(weatherData.current.temp, { unit }))
+                    : 18}
                   °{unit}
                 </h1>
                 <p className="mt-2 text-xl capitalize text-sky-700">
@@ -114,11 +116,7 @@ export default function WeatherApp() {
               </div>
             </div>
             <div className="mt-auto text-center">
-              <p className="text-lg font-medium text-sky-800">
-                {weatherData?.current?.dt
-                  ? formatFullDate(weatherData.current.dt)
-                  : "20th May 2023"}
-              </p>
+              <p className="text-lg font-medium text-sky-800">{formattedDate}</p>
               <p className="text-lg text-sky-700">
                 {weatherData?.city ?? city}
                 {weatherData?.country ? `, ${weatherData.country}` : ""}
@@ -154,7 +152,7 @@ export default function WeatherApp() {
             <div>
               <h2 className="mb-4 text-xl font-semibold text-sky-900">Today's Highlights</h2>
               <WeatherDetails
-                windSpeed={convertedWindSpeed}
+                windSpeed={getWindSpeed(weatherData?.current.wind_speed ?? 0,{ unit })}
                 windDirection={weatherData?.current?.wind_deg ?? 0}
                 humidity={weatherData?.current?.humidity ?? 0}
                 unit={unit}
